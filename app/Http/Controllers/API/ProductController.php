@@ -7,6 +7,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Product;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Product as ProductResource;
+use Illuminate\Validation\Rule;
 
 class ProductController extends BaseController
 {
@@ -33,7 +34,13 @@ class ProductController extends BaseController
         $input = $request->all();
         $validator = Validator::make($input, [
             'name' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
+            'size' => [
+                'required',
+                Rule::in(['normal', 'medium', 'large']),
+            ],
+            'stock' => 'required|integer',
+            'price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
 
         if ($validator->fails()) {
@@ -72,7 +79,13 @@ class ProductController extends BaseController
         $input = $request->all();
         $validator = Validator::make($input, [
             'name' => 'required',
-            'detail' => 'required'
+            'detail' => 'required',
+            'size' => [
+                'required',
+                Rule::in(['normal', 'medium', 'large']),
+            ],
+            'stock' => 'required|integer',
+            'price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
 
         if ($validator->fails()) {
