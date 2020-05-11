@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->nullable()->references('id')->on('users')->onDelete('cascade');
-            $table->enum('status', ['on process', 'on delivery', 'completed']);
+            $table->enum('status', ['waiting', 'on process', 'on delivery', 'completed']);
             $table->timestamps();
         });
     }
