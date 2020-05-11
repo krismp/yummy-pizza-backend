@@ -17,8 +17,20 @@ Route::post('register', 'API\RegisterController@register');
 
 Route::post('login', 'API\RegisterController@login');
 
-Route::resource('products', 'API\ProductController');
-
 Route::middleware('auth:api')->group(function () {
-    
+    Route::post('products', 'API\ProductController@store');
+    Route::put('products/{id}', 'API\ProductController@update');
+    Route::patch('products/{id}', 'API\ProductController@update');
+    Route::delete('products/{id}', 'API\ProductController@destroy');
+
+    Route::get('carts', 'API\CartController@index');
 });
+
+Route::get('products', 'API\ProductController@index');
+Route::get('products/{id}', 'API\ProductController@show');
+
+Route::post('carts', 'API\CartController@store');
+Route::put('carts/{id}', 'API\CartController@update');
+Route::patch('carts/{id}', 'API\CartController@update');
+Route::delete('carts/{id}', 'API\CartController@destroy');
+
