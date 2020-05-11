@@ -25,6 +25,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('carts', 'API\CartController@index');
     Route::get('cart_items', 'API\CartItemController@index');
+    Route::get('orders', 'API\OrderController@index');
 });
 
 Route::get('products', 'API\ProductController@index');
@@ -39,4 +40,9 @@ Route::post('cart_items', 'API\CartItemController@store');
 Route::put('cart_items/{id}', 'API\CartItemController@update');
 Route::patch('cart_items/{id}', 'API\CartItemController@update');
 Route::delete('cart_items/{id}', 'API\CartItemController@destroy');
+
+Route::post('orders', 'API\OrderController@store');
+Route::put('orders/{id}', 'API\OrderController@update');
+Route::patch('orders/{id}', 'API\OrderController@update');
+Route::delete('orders/{id}', 'API\OrderController@destroy');
 
