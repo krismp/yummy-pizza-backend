@@ -24,6 +24,7 @@ Route::middleware('auth:api')->group(function () {
     Route::delete('products/{id}', 'API\ProductController@destroy');
 
     Route::get('carts', 'API\CartController@index');
+    Route::get('cart_items', 'API\CartItemController@index');
 });
 
 Route::get('products', 'API\ProductController@index');
@@ -33,4 +34,9 @@ Route::post('carts', 'API\CartController@store');
 Route::put('carts/{id}', 'API\CartController@update');
 Route::patch('carts/{id}', 'API\CartController@update');
 Route::delete('carts/{id}', 'API\CartController@destroy');
+
+Route::post('cart_items', 'API\CartItemController@store');
+Route::put('cart_items/{id}', 'API\CartItemController@update');
+Route::patch('cart_items/{id}', 'API\CartItemController@update');
+Route::delete('cart_items/{id}', 'API\CartItemController@destroy');
 
