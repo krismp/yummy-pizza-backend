@@ -15,4 +15,14 @@ class CartItem extends Model
     protected $fillable = [
         'cart_id', 'product_id', 'total', 'total_price_in_usd'
     ];
+
+    public function product()
+    {
+        return $this->hasOne('App\Product');
+    }
+
+    public function cart()
+    {
+        return $this->belongsTo('App\Cart');
+    }
 }
