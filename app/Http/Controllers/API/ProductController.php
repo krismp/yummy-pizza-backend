@@ -35,10 +35,6 @@ class ProductController extends BaseController
         $validator = Validator::make($input, [
             'name' => 'required',
             'detail' => 'required',
-            'size' => [
-                'required',
-                Rule::in(['normal', 'medium', 'large']),
-            ],
             'stock' => 'required|integer',
             'price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
@@ -80,10 +76,6 @@ class ProductController extends BaseController
         $validator = Validator::make($input, [
             'name' => 'required',
             'detail' => 'required',
-            'size' => [
-                'required',
-                Rule::in(['normal', 'medium', 'large']),
-            ],
             'stock' => 'required|integer',
             'price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ]);
