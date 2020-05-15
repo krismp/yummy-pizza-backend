@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
+use App\Http\Resources\Product as ProductResource;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,7 +18,7 @@ class CartItem extends JsonResource
         return [
             'id' => $this->id,
             'cart_id' => $this->cart_id,
-            'product_id' => $this->product_id,
+            'product' => $this->product($this->product_id),
             'total' => $this->total,
             'total_price_in_usd' => $this->total_price_in_usd,
             'created_at' => $this->created_at->format('d/m/Y'),

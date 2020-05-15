@@ -16,9 +16,11 @@ class CartItem extends Model
         'cart_id', 'product_id', 'total', 'total_price_in_usd'
     ];
 
-    public function product()
+    public function product($product_id)
     {
-        return $this->hasOne('App\Product');
+        $product = Product::find($product_id);
+
+        return $product;
     }
 
     public function cart()
