@@ -32,11 +32,13 @@ Route::get('products', 'API\ProductController@index');
 Route::get('products/{id}', 'API\ProductController@show');
 
 Route::post('carts', 'API\CartController@store');
+Route::get('carts/{id}', 'API\CartController@show');
 Route::put('carts/{id}', 'API\CartController@update');
 Route::patch('carts/{id}', 'API\CartController@update');
 Route::delete('carts/{id}', 'API\CartController@destroy');
 
 Route::post('cart_items', 'API\CartItemController@store');
+Route::get('cart_items/{id}', 'API\CartItemController@show');
 Route::put('cart_items/{id}', 'API\CartItemController@update');
 Route::patch('cart_items/{id}', 'API\CartItemController@update');
 Route::delete('cart_items/{id}', 'API\CartItemController@destroy');
