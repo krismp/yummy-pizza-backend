@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Order;
+use App\Cart;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\Order as OrderResource;
 use Illuminate\Validation\Rule;
@@ -39,6 +40,12 @@ class OrderController extends BaseController
             'delivery_cost_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'final_price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
+
+        if ($input['user_id'] != null) {
+            $cart = Cart::find($input['cart_id']);
+            $cart->user_id = $input['user_id'];
+            $cart->save();
+        }
 
         if ($validator->fails()) {
             return $this->sendError('Validation Error.', $validator->errors());

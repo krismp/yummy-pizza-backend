@@ -55,6 +55,9 @@ class CartItemController extends BaseController
             ]);
         } else {
             $cart = Cart::find($input['cart_id']);
+            $cart->user_id = $input['user_id'];
+            $cart->save();
+            
             $cart_item = CartItem::where('cart_id', $input['cart_id'])
                 ->where('product_id', $input['product_id'])->first();
             if ($cart_item) {
