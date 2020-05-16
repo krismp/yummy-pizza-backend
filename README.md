@@ -1,27 +1,25 @@
+# Yummy Pizza Backend
+
 Yummy pizza backend, written in Laravel, available endpoints:
 
+Deployed at: https://krismp-yummy-pizza-backend.herokuapp.com/api/products
+
+## Available endpoints:
+
 ```shell
-POST     | api/cart_items
-GET|HEAD | api/cart_items
-DELETE   | api/cart_items/{id}
-PATCH    | api/cart_items/{id}
-PUT      | api/cart_items/{id}
-POST     | api/carts
-GET|HEAD | api/carts
-DELETE   | api/carts/{id}
-PATCH    | api/carts/{id}
-PUT      | api/carts/{id}
-POST     | api/login
-GET|HEAD | api/orders
-POST     | api/orders
-PUT      | api/orders/{id}
-PATCH    | api/orders/{id}
-DELETE   | api/orders/{id}
-GET|HEAD | api/products
-POST     | api/products
-GET|HEAD | api/products/{id}
-DELETE   | api/products/{id}
-PATCH    | api/products/{id}
-PUT      | api/products/{id}
-POST     | api/register
++--------+----------+---------------------+------+------------------------------------------------------+--------------+
+| Domain | Method   | URI                 | Name | Action                                               | Middleware   |
++--------+----------+---------------------+------+------------------------------------------------------+--------------+
+|        | GET|HEAD | /                   |      | Closure                                              | web          |
+|        | POST     | api/cart_items      |      | App\Http\Controllers\API\CartItemController@store    | api          |
+|        | DELETE   | api/cart_items/{id} |      | App\Http\Controllers\API\CartItemController@destroy  | api          |
+|        | POST     | api/carts           |      | App\Http\Controllers\API\CartController@store        | api          |
+|        | GET|HEAD | api/carts/{id}      |      | App\Http\Controllers\API\CartController@show         | api          |
+|        | POST     | api/login           |      | App\Http\Controllers\API\RegisterController@login    | api          |
+|        | GET|HEAD | api/orders          |      | App\Http\Controllers\API\OrderController@index       | api,auth:api |
+|        | POST     | api/orders          |      | App\Http\Controllers\API\OrderController@store       | api          |
+|        | GET|HEAD | api/products        |      | App\Http\Controllers\API\ProductController@index     | api          |
+|        | GET|HEAD | api/products/{id}   |      | App\Http\Controllers\API\ProductController@show      | api          |
+|        | POST     | api/register        |      | App\Http\Controllers\API\RegisterController@register | api          |
++--------+----------+---------------------+------+------------------------------------------------------+--------------+
 ```
