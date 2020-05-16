@@ -34,6 +34,7 @@ class Cart extends Model
         foreach($this->items as $item) {
             $product = new stdClass();
             $p = $item->product($item->product_id);
+            $product->id = $item->product_id;
             $product->name = $p->name;
             $product->total = $item->total;
             $product->unit_price = $p->price_in_usd;
