@@ -17,7 +17,9 @@ class Order extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'cart_id' => $this->cart_id,
+            'items' => $this->cart->product_items(),
+            'total_cart_price_in_usd' => $this->cart->cart_price(),
+            'total_items' => $this->cart->total_items(),
             'status' => $this->status,
             'created_at' => $this->created_at->format('d/m/Y'),
             'updated_at' => $this->updated_at->format('d/m/Y'),

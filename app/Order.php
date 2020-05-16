@@ -13,11 +13,11 @@ class Order extends Model
      */
 
     protected $fillable = [
-        'user_id', 'status', 'cart_id'
+        'user_id', 'status', 'cart_id', 'address', 'final_price_in_usd'
     ];
 
     public function cart()
     {
-        return $this->hasOne('App\Cart');
+        return $this->belongsTo('App\Cart');
     }
 }

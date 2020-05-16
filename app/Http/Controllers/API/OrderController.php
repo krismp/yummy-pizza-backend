@@ -16,11 +16,12 @@ class OrderController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Order::all();
+        $user_id = $request->input('user_id');
+        $orders = Order::where('user_id', $user_id)->take(5)->get();
 
-        return $this->sendResponse(OrderResource::collection($products), 'Orders retrieved successfully.');
+        return $this->sendResponse(OrderResource::collection($orders), 'Orders retrieved successfully.');
     }
 
     /**
@@ -33,7 +34,9 @@ class OrderController extends BaseController
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'cart_id' => 'required'
+            'cart_id' => 'required',
+            'address' => 'required',
+            'final_price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
 
         if ($validator->fails()) {
