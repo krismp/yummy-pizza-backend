@@ -36,6 +36,7 @@ class OrderController extends BaseController
         $validator = Validator::make($input, [
             'cart_id' => 'required',
             'address' => 'required',
+            'delivery_cost_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'final_price_in_usd' => 'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
 

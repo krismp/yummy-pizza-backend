@@ -13,7 +13,7 @@ class Order extends Model
      */
 
     protected $fillable = [
-        'user_id', 'status', 'cart_id', 'address', 'final_price_in_usd'
+        'user_id', 'status', 'cart_id', 'address', 'final_price_in_usd', 'delivery_cost_in_usd'
     ];
 
     public function cart()
