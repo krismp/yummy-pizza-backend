@@ -24,36 +24,6 @@ class CartController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $input = $request->all();
-        $cart = Cart::create($input);
-
-        return $this->sendResponse(new CartResource($cart), 'Cart created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $cart = Cart::find($id);
-        if (is_null($cart)) {
-            return $this->sendError('Cart not found.');
-        }
-
-        return $this->sendResponse(new CartResource($cart), 'Cart retrieved successfully.');
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
